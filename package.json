@@ -1,7 +1,7 @@
 {
   "name": "@our-weekend-project/html-to-pdf-ci",
   "version": "0.0.1",
-  "description": "Converts HTML documents to PDFs",
+  "description": "Converts HTML documents to PDFs for static site generators",
   "main": "cli.js",
   "engines": {
     "node": ">= 10.0.0"
@@ -30,6 +30,8 @@
   "homepage": "https://github.com/our-weekend-project/html-to-pdf-ci#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "inquirer": "^7.1.0",
+    "inquirer-fuzzy-path": "^2.3.0",
     "puppeteer": "^3.1.0"
   },
   "devDependencies": {
