@@ -12,10 +12,10 @@ try {
 } catch (error) {
 
 }
-if (ci) {
+if (ci === '--ci') {
     if (!configFile) {
         console.error('No configuration file!');
-        return -1;
+        throw new Error('No configuration file found');
     }
     console.log('CI env');
     htmlToPdfCI.main(configFile);
@@ -31,9 +31,8 @@ if (ci) {
         {
             type: 'fuzzypath',
             name: 'destinationPath',
-            excludePath: nodePath => nodePath.startsWith('node_modules'),
+            excludePath: nodePath => nodePath.startsWith('node_modules') || nodePath.startsWith('.git'),
             rootPath: './',
-            depthLimit: 5,
             message: 'Enter a destination path for generated PDF',
             default: `${configFile.destinationPath ? configFile.destinationPath : './output'}`
         },
@@ -46,15 +45,16 @@ if (ci) {
         {
             type: 'fuzzypath',
             name: 'sourcePath',
-            excludePath: nodePath => nodePath.startsWith('node_modules'),
+            excludePath: nodePath => nodePath.startsWith('node_modules') || nodePath.startsWith('.git'),
             rootPath: './',
-            depthLimit: 5,
             message: 'Enter the path of the source HTML document',
             default: `${configFile.sourcePath ? configFile.sourcePath : './'}`
         },
         {
-            type: 'input',
+            type: 'fuzzypath',
             name: 'sitePath',
+            excludePath: nodePath => nodePath.startsWith('node_modules') || nodePath.startsWith('.git'),
+            rootPath: './',
             message: 'Enter the path to the generated site folder',
             default: `${configFile.sitePath ? configFile.sitePath : './_site'}`
         },
