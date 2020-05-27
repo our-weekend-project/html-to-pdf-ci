@@ -2,14 +2,14 @@ const path = require('path');
 const puppeteer = require('puppeteer');
 const express = require('express');
 
-const main = async (program) => {
+const main = async (answers) => {
     try {
         const port = 5001;
-        const destPath = path.join(__dirname, program.destinationPath);
-        const fullResumePath = `http://localhost:${port}/${program.sourcePath}/${program.sourceDocument}`;
-        const destFilename = program.fileName;
+        const destPath = path.join(process.cwd(), answers.destinationPath);
+        const fullResumePath = `http://localhost:${port}/${answers.sourcePath}`;
+        const destFilename = answers.fileName;
         const app = express();
-        app.use(express.static(path.join('../', program.sitePath)));
+        app.use(express.static(path.join(process.cwd())));
         const server = app.listen(port, async () => {
             const browser = await puppeteer.launch();
             const page = await browser.newPage();
@@ -28,6 +28,7 @@ const main = async (program) => {
             });
             await browser.close();
             server.close(() => {
+                console.log(`Finished generating ${answers.fileName}`);
                 console.log(`closing server`);
             });
         });

@@ -6,9 +6,9 @@ const path = require('path');
 const htmlToPdfCI = require('./index');
 const package = require('./package.json');
 const ci = process.argv[2];
-let configFile;
+let configFile = {};
 try {
-    configFile = JSON.parse(fs.readFileSync(path.join(__dirname, '.htmltopdf.json')));
+    configFile = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.htmltopdf.json')));
 } catch (error) {
 
 }
@@ -17,7 +17,8 @@ if (ci === '--ci') {
         console.error('No configuration file!');
         throw new Error('No configuration file found');
     }
-    console.log('CI env');
+    console.log('Running in CI environment with options:');
+    console.log(configFile);
     htmlToPdfCI.main(configFile);
 } else {
     
@@ -35,12 +36,6 @@ if (ci === '--ci') {
             rootPath: './',
             message: 'Enter a destination path for generated PDF',
             default: `${configFile.destinationPath ? configFile.destinationPath : './output'}`
-        },
-        {
-            type: 'input',
-            name: 'sourceDocument',
-            message: 'Enter the name of the source HTML document',
-            default: `${configFile.sourceDocument ? configFile.sourceDocument : 'index.html'}`
         },
         {
             type: 'fuzzypath',
@@ -69,9 +64,11 @@ if (ci === '--ci') {
     inquirer.prompt(questions).then(answers => {
         if (answers.saveToConfig) {
             delete answers.saveToConfig;
-            fs.writeFileSync(path.join(__dirname, '.htmltopdf.json'), JSON.stringify(answers));
+            fs.writeFileSync(path.join(process.cwd(), '.htmltopdf.json'), JSON.stringify(answers));
             console.log('Successfully saved config file!');
         }
+        console.log(`Generating ${answers.fileName}`);
+        htmlToPdfCI.main(answers);
     });
 
 }
