@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const inquirer = require('inquirer');
 inquirer.registerPrompt('fuzzypath', require('inquirer-fuzzy-path'));
 
@@ -35,7 +36,7 @@ if (ci === '--ci') {
             excludePath: nodePath => nodePath.startsWith('node_modules') || nodePath.startsWith('.git'),
             rootPath: './',
             message: 'Enter a destination path for generated PDF',
-            default: `${configFile.destinationPath ? configFile.destinationPath : './output'}`
+            default: `${configFile.destinationPath ? configFile.destinationPath : 'output'}`
         },
         {
             type: 'fuzzypath',
@@ -43,7 +44,7 @@ if (ci === '--ci') {
             excludePath: nodePath => nodePath.startsWith('node_modules') || nodePath.startsWith('.git'),
             rootPath: './',
             message: 'Enter the path of the source HTML document',
-            default: `${configFile.sourcePath ? configFile.sourcePath : './'}`
+            default: `${configFile.sourcePath ? configFile.sourcePath : '/'}`
         },
         {
             type: 'fuzzypath',
@@ -51,7 +52,7 @@ if (ci === '--ci') {
             excludePath: nodePath => nodePath.startsWith('node_modules') || nodePath.startsWith('.git'),
             rootPath: './',
             message: 'Enter the path to the generated site folder',
-            default: `${configFile.sitePath ? configFile.sitePath : './_site'}`
+            default: `${configFile.sitePath ? configFile.sitePath : '_site'}`
         },
         {
             type: 'confirm',
