@@ -7,13 +7,15 @@ const main = async (answers) => {
         const port = 5001;
         const destPath = path.join(process.cwd(), answers.destinationPath);
         const fullResumePath = `http://localhost:${port}/${answers.sourcePath}`;
-        const destFilename = answers.fileName;
+        let destFilename = answers.fileName;
         const app = express();
         app.use(express.static(path.join(process.cwd())));
         const server = app.listen(port, async () => {
             const browser = await puppeteer.launch();
             const page = await browser.newPage();
-
+            if (!destFilename.endsWith('.pdf')) {
+                destFilename += '.pdf';
+            }
             await page.goto(fullResumePath, { waitUntil: 'networkidle0' });
             await page.pdf({
                 path: path.join(destPath, destFilename),
@@ -29,7 +31,7 @@ const main = async (answers) => {
             await browser.close();
             server.close(() => {
                 console.log(`Finished generating ${answers.fileName}`);
-                console.log(`closing server`);
+                console.log(`${answers.fileName} located in ${answers.destinationPath}/`);
             });
         });
         return;
