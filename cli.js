@@ -22,46 +22,8 @@ if (ci === '--ci') {
     console.log(configFile);
     htmlToPdfCI.main(configFile);
 } else {
-    
-    const questions = [
-        {
-            type: 'input',
-            name: 'fileName',
-            message: 'Enter a file name for generated PDF',
-            default: `${configFile.fileName ? configFile.fileName : 'default.pdf'}`
-        },
-        {
-            type: 'fuzzypath',
-            name: 'destinationPath',
-            excludePath: nodePath => nodePath.startsWith('node_modules') || nodePath.startsWith('.git'),
-            rootPath: './',
-            message: 'Enter a destination path for generated PDF',
-            default: `${configFile.destinationPath ? configFile.destinationPath : 'output'}`
-        },
-        {
-            type: 'fuzzypath',
-            name: 'sourcePath',
-            excludePath: nodePath => nodePath.startsWith('node_modules') || nodePath.startsWith('.git'),
-            rootPath: './',
-            message: 'Enter the path of the source HTML document',
-            default: `${configFile.sourcePath ? configFile.sourcePath : '/'}`
-        },
-        {
-            type: 'fuzzypath',
-            name: 'sitePath',
-            excludePath: nodePath => nodePath.startsWith('node_modules') || nodePath.startsWith('.git'),
-            rootPath: './',
-            message: 'Enter the path to the generated site folder',
-            default: `${configFile.sitePath ? configFile.sitePath : '_site'}`
-        },
-        {
-            type: 'confirm',
-            name: 'saveToConfig',
-            message: 'Save responses to .htmltopdf.json?',
-            default: true
-        }
-    ];
-    
+    const questionsModule = require('./questions');
+    const questions = questionsModule.createQuestions(configFile);
     inquirer.prompt(questions).then(answers => {
         if (answers.saveToConfig) {
             delete answers.saveToConfig;
