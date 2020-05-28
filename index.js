@@ -19,13 +19,14 @@ const main = async (answers) => {
             await page.goto(fullPDFPath, { waitUntil: 'networkidle0' });
             await page.pdf({
                 path: path.join(destPath, destFilename),
-                format: 'Letter',
-                printBackground: true,
+                format: answers.paperFormat,
+                printBackground: answers.printBackground,
+                landscape: answers.paperOrientation,
                 margin: {
-                    top: '0.4 in',
-                    left: '0.4 in',
-                    right: '0.39 in',
-                    bottom: '0.39 in'
+                    top: answers.marginTop,
+                    left: answers.marginLeft,
+                    right: answers.marginRight,
+                    bottom: answers.marginBottom
                 }
             });
             await browser.close();
