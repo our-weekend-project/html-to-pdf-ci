@@ -6,7 +6,7 @@ const main = async (answers) => {
     try {
         const port = 5001;
         const destPath = path.join(process.cwd(), answers.destinationPath);
-        const fullResumePath = `http://localhost:${port}/${answers.sourcePath}`;
+        const fullPDFPath = `http://localhost:${port}/${answers.sourcePath}`;
         let destFilename = answers.fileName;
         const app = express();
         app.use(express.static(path.join(process.cwd())));
@@ -16,7 +16,7 @@ const main = async (answers) => {
             if (!destFilename.endsWith('.pdf')) {
                 destFilename += '.pdf';
             }
-            await page.goto(fullResumePath, { waitUntil: 'networkidle0' });
+            await page.goto(fullPDFPath, { waitUntil: 'networkidle0' });
             await page.pdf({
                 path: path.join(destPath, destFilename),
                 format: 'Letter',
