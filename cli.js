@@ -11,7 +11,7 @@ let configFile = {};
 try {
     configFile = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.htmltopdf.json')));
 } catch (error) {
-
+    console.log('No configuration file found. Using default values.');
 }
 if (ci === '--ci') {
     if (Object.keys(configFile).length === 0 && configFile.constructor === Object ) {
