@@ -46,10 +46,28 @@ The destination should exist before generating the PDF!
 The path to your HTML source document.
 The path must end with the actual HTML document, e.g. `somePath/index.html`.
 
-### Site path prompt
+### Print background prompt
 
-The location of your generated static site.
-In most static site generators, this location is called `_site` but please pay attention if you have changed the generated directory name!
+Confirm whether or not a user wants to print background graphics from the selected HTML document.
+
+### Landscape orientation prompt
+
+Confirm whether a user wants to print in landscape or portrait orientation.
+
+### Use custom margins prompt
+
+Confirm if a user wants to use custom margins.
+If a user inputs `y`, then the following prompts appear:
+
+* Top margin which can use units of `px`, `in`, `mm`, or `cm`
+* Left margin which can use units of `px`, `in`, `mm`, or `cm`
+* Right margin which can use units of `px`, `in`, `mm`, or `cm`
+* Bottom margin which can use units of `px`, `in`, `mm`, or `cm`
+
+### Paper format prompt
+
+Select which paper format puppeteer should use.
+The following values are valid: Letter, Legal, Tabloid, Ledger, A0, A1, A2, A3, A4, A5, and A6.
 
 ### Save prompt
 
