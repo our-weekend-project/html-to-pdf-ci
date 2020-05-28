@@ -14,7 +14,7 @@ try {
 
 }
 if (ci === '--ci') {
-    if (!configFile) {
+    if (Object.keys(configFile).length === 0 && configFile.constructor === Object ) {
         console.error('No configuration file!');
         throw new Error('No configuration file found');
     }
