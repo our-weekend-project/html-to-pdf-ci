@@ -1,0 +1,67 @@
+{
+  "name": "@our-weekend-project/html-to-pdf-ci",
+  "version": "0.0.1",
+  "description": "Converts HTML documents to PDFs for static site generators",
+  "main": "cli.js",
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "bin": {
+    "@our-weekend-project/html-to-pdf-ci": "./cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node cli",
+    "release-it": "release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/our-weekend-project/html-to-pdf-ci.git"
+  },
+  "keywords": [
+    "CI",
+    "Puppeteer"
+  ],
+  "author": "tgiles",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/our-weekend-project/html-to-pdf-ci/issues"
+  },
+  "homepage": "https://github.com/our-weekend-project/html-to-pdf-ci#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "inquirer": "^7.1.0",
+    "inquirer-fuzzy-path": "^2.3.0",
+    "puppeteer": "^3.1.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@release-it/conventional-changelog": "^1.1.0",
+    "jasmine": "3.5.0",
+    "husky": "^4.0.0",
+    "nyc": "^15.0.0",
+    "release-it": "^13.0.0"
+  },
+  "release-it": {
+    "github": {
+      "releaseName": "release: ${version}",
+      "release": true
+    },
+    "git": {
+      "commitMessage": "release: ${version}",
+      "tagAnnotation": "release: ${version}"
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "infile": "CHANGELOG.md"
+      }
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
