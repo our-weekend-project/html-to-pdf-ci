@@ -6,7 +6,7 @@
 [![Master build status](https://badgen.net/github/status/our-weekend-project/html-to-pdf-ci)](https://github.com/our-weekend-project/actions)
 [![Latest master commit](https://badgen.net/github/last-commit/our-weekend-project/html-to-pdf-ci/master)](https://github.com/our-weekend-project/html-to-pdf-ci/commits/master)
 
-A CLI/CI tool for generating PDFs from HTML documents for static site generators.
+A CLI/CI tool for generating PDFs from HTML documents.
 
 ![Application in action](img/app.gif)
 
