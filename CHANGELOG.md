@@ -1,3 +1,5 @@
+* docs: update description in readme (c8d2487)
+
 * ci: fix npm access level for publishing (a8d5da3)
 
 <a name="0.1.0"></a>
