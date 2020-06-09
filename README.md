@@ -3,7 +3,7 @@
 [![npm version](https://badgen.net/npm/v/@our-weekend-project/html-to-pdf-ci)](https://www.npmjs.com/package/@our-weekend-project/html-to-pdf-ci)
 
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=our-weekend-project/html-to-pdf-ci)](https://dependabot.com)
-[![Master build status](https://badgen.net/github/status/our-weekend-project/html-to-pdf-ci)](https://github.com/our-weekend-project/actions)
+<!-- [![Master build status](https://badgen.net/github/status/our-weekend-project/html-to-pdf-ci)](https://github.com/our-weekend-project/html-to-pdf-ci/actions) -->
 [![Latest master commit](https://badgen.net/github/last-commit/our-weekend-project/html-to-pdf-ci/master)](https://github.com/our-weekend-project/html-to-pdf-ci/commits/master)
 
 A CLI/CI tool for generating PDFs from HTML documents.
