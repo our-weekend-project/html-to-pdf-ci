@@ -10,7 +10,8 @@
     "@our-weekend-project/html-to-pdf-ci": "./cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc --reporter=html --reporter=text jasmine",
+    "coverage": "npm run test && node nyc_server",
     "start": "node cli",
     "release-it": "release-it"
   },
@@ -38,10 +39,13 @@
     "@commitlint/cli": "^9.0.1",
     "@commitlint/config-conventional": "^9.0.1",
     "@release-it/conventional-changelog": "^1.1.0",
-    "jasmine": "3.5.0",
+    "bdd-stdin": "^0.2.0",
     "husky": "^4.0.0",
-    "nyc": "^15.0.0",
-    "release-it": "^13.0.0"
+    "jasmine": "^3.5.0",
+    "nyc": "^15.1.0",
+    "open": "^7.0.4",
+    "release-it": "^13.0.0",
+    "serve-index": "^1.9.1"
   },
   "release-it": {
     "github": {
