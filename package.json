@@ -38,7 +38,7 @@
     "@commitlint/cli": "^9.0.1",
     "@commitlint/config-conventional": "^9.0.1",
     "@release-it/conventional-changelog": "^1.1.0",
-    "jasmine": "3.5.0",
+    "jasmine": "3.6.2",
     "husky": "^4.0.0",
     "nyc": "^15.0.0",
     "release-it": "^13.0.0"
