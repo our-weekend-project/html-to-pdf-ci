@@ -30,7 +30,7 @@
   "homepage": "https://github.com/our-weekend-project/html-to-pdf-ci#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "inquirer": "^7.1.0",
+    "inquirer": "^8.2.0",
     "inquirer-fuzzy-path": "^2.3.0",
     "puppeteer": "^9.1.1"
   },
