@@ -1,3 +1,7 @@
+
+
+## [0.1.4](https://github.com/our-weekend-project/html-to-pdf-ci/compare/0.1.3...0.1.4) (2022-12-19)
+
 * build: update dependencies (75a86b0)
 * build(deps-dev): bump husky from 4.2.5 to 5.1.3 (#69) (75bb602)
 * build(deps-dev): bump @commitlint/config-conventional (#67) (7efd3e9)
@@ -38,4 +42,3 @@
 ### Features
 
 * add html to pdf ci application ([#1](https://github.com/our-weekend-project/html-to-pdf-ci/issues/1)) ([1205883](https://github.com/our-weekend-project/html-to-pdf-ci/commit/1205883))
-
